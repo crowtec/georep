@@ -92,6 +92,7 @@ class WelcomeController < ApplicationController
   end
 
   def get_all_repvalues
+
     p = {
         authentication:{
             email: "a@b.c",
@@ -104,6 +105,7 @@ class WelcomeController < ApplicationController
         }
     }
     queryCtOS("ctos.getZones", p)
+
   end
 
 end
