@@ -20,7 +20,11 @@ class WelcomeController < ApplicationController
             shape_class: "circular",
             coordinates:
                 [params[:coordinates]]
+        },
+        data_info:{
+            data: params[:data]
         }
+
     }
     queryCtOS("ctos.createZone", p)
   end
