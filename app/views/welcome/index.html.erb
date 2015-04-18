@@ -8,12 +8,12 @@
   <div id="reputacion" class="alert text-center alert-success col-md-4 col-sm-4 col-xs-4">
     Reputación
   </div>
-  <div id="new-valoration" class="btn btn-success glyphicon glyphicon-plus col-md-2"></div>
+  <button type="button" id="new-valoration" class="btn btn-success glyphicon glyphicon-plus col-md-2" data-toggle="modal" data-target="#myModal"></button>
 
 
 </div>
 
-<div class="modal fade">
+<div id="myModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,11 +21,17 @@
         <h4 class="modal-title">Añadir Valoración</h4>
       </div>
       <div class="modal-body">
-            
+        <%= bootstrap_form_tag url: '/add_repvalue' do |f| %>
+            <%= f.text_area :texto %>
+            <%= f.text_field :foto %>
+            <%= f.text_field :etiquetas %>
+            <%= f.number_field :valor %>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <%= f.submit "Valorar", class: 'btn btn-success' %>
+        <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
