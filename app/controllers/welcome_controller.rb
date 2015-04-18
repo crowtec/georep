@@ -7,6 +7,13 @@ class WelcomeController < ApplicationController
   end
 
   def add_repvalue
+    data = {
+        texto: params[:texto],
+        foto: params[:foto],
+        etiquetas: params[:etiquetas],
+        valor: params[:valor]
+    }
+    coordinate = [40.452666, -3.678407]
     p = {
         authentication:{
             email: "a@b.c",
@@ -18,11 +25,11 @@ class WelcomeController < ApplicationController
         zone_class: "repvalue",
         shape:{
             shape_class: "circular",
-            coordinates:
-                [params[:coordinates]]
+            coordinate: coordinate,
+            radius: 5
         },
         data_info:{
-            data: params[:data]
+            data: data
         }
 
     }
