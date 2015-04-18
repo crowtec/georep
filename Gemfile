@@ -40,4 +40,5 @@ gem 'spring',        group: :development
 
 gem 'mongoid'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
 

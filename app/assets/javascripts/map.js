@@ -20,7 +20,7 @@ var map;
 function initialize() {
 
     var mapOptions = {
-        center: new google.maps.LatLng(40.406170, -3.700261),
+        center: new google.maps.LatLng(40.452666, -3.678407),
         zoom:17
     };
     map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
@@ -33,14 +33,14 @@ function drawParent(zones){
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
         var coordinates = geometry.coordinates[0];
-        console.log(zones.params.zones[key]);
+        //console.log(zones.params.zones[key]);
        // map.data.loadGeoJson(geometry);
 
         var polygonCoords = [];
         for (var i = 0; i < coordinates.length; i++ ){
             polygonCoords.push(new google.maps.LatLng(coordinates[i][0], coordinates[i][1]));
         }
-        console.log(polygonCoords);
+        //console.log(polygonCoords);
         // Construct the polygon.
         var polygon = new google.maps.Polygon({
             paths: polygonCoords,
@@ -59,12 +59,12 @@ function drawParent(zones){
 function drawZones(zones) {
 
 
-    console.log(zones.params.zones);
+    console.log(zones);
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
         var coordinates = geometry.coordinates;
-        console.log(geometry);
-        console.log(coordinates);
+        //console.log(geometry);
+        //console.log(coordinates);
 
         var color = '#' + (function co(lor) {
                 return (lor +=
@@ -87,10 +87,14 @@ function drawZones(zones) {
         // Add the circle for this city to the map.
         lightCircle = new google.maps.Circle(circleOptions);
 
-        var light = new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: center,
             map: map,
-            icon: "http://www.basicgo.com/bundles/basicgo/frontend/imagenes/exclamacionAviso.png"
+            icon: "http://www.basicgo.com/bundles/basicgo/frontend/imagenes/exclamacionAviso.png",
+            customInfo: JSON.parse(zones.params.zones[key].data_info.data)
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            console.log(marker.customInfo);
         });
 
     }

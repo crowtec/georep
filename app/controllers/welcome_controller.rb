@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
   require 'xmlrpc/client'
 
   def index
-    @zones = get_all_zones
+    @zones = get_all_barrios
+    @valoraciones = get_all_repvalues
   end
 
   def add_repvalue
@@ -75,7 +76,23 @@ class WelcomeController < ApplicationController
     queryCtOS("ctos.getAllZones", p)
   end
 
+  def get_all_barrios
+    p = {
+        authentication:{
+            email: "a@b.c",
+            user_code: "a0066bbcbe25d7029a0e6934e1aa",
+            app_code: "49456203c8e64d3690ed0e0dccf151e4e693"
+        },
+        parameters:{
+            is_object: false,
+            zone_class: "barrio"
+        }
+    }
+    queryCtOS("ctos.getZones", p)
+  end
+
   def get_all_repvalues
+
     p = {
         authentication:{
             email: "a@b.c",
@@ -87,7 +104,8 @@ class WelcomeController < ApplicationController
             zone_class: "repvalue"
         }
     }
-    queryCtOS("ctos.getAllZones", p)
+    queryCtOS("ctos.getZones", p)
+
   end
 
 end

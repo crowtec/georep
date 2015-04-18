@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'get_current_zone' => 'welcome#get_current_zone'
 
-  get 'add_repvalue' => 'welcome#add_repvalue'
+  post 'add_repvalue' => 'welcome#add_repvalue'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
