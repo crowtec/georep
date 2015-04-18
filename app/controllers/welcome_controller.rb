@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
     queryCtOS("ctos.createZone", p)
   end
 
-  def get_location_barrio
+  def get_current_zone
     p = {
         authentication:{
             email: "a@b.c",
@@ -39,7 +39,7 @@ class WelcomeController < ApplicationController
     queryCtOS("ctos.coordinatesContainerZones", p)
   end
 
-  def get_location_repvalues
+  def get_current_repvalues
     p = {
         authentication:{
             email: "a@b.c",

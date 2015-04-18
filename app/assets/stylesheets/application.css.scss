@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+
+  #map-container {
+    height: 90%;
+    width: 100%;
+  }
+
+}
+
+
+
+.btns-width {
+  width: 250px;
+}
+
+.modal-width {
+  width: 300px;
+}
