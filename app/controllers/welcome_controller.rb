@@ -26,10 +26,10 @@ class WelcomeController < ApplicationController
         shape:{
             shape_class: "circular",
             coordinate: coordinate,
-            radius: 5
+            radius: 1
         },
         data_info:{
-            data: data
+            data: data.to_json
         }
 
     }
