@@ -35,6 +35,8 @@ class WelcomeController < ApplicationController
 
     }
     queryCtOS("ctos.createZone", p)
+
+    redirect_to root_path
   end
 
   def get_current_zone
