@@ -32,7 +32,27 @@ function initialize() {
 function drawParent(zones){
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
-        map.data.loadGeoJson(geometry);
+        var coordinates = geometry.coordinates[0];
+        console.log(zones.params.zones[key]);
+       // map.data.loadGeoJson(geometry);
+
+        var polygonCoords = [];
+        for (var i = 0; i < coordinates.length; i++ ){
+            polygonCoords.push(new google.maps.LatLng(coordinates[i][0], coordinates[i][1]));
+        }
+        console.log(polygonCoords);
+        // Construct the polygon.
+        var polygon = new google.maps.Polygon({
+            paths: polygonCoords,
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map
+        });
+
+
     }
 
 }
@@ -77,4 +97,4 @@ function drawZones(zones) {
 
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
