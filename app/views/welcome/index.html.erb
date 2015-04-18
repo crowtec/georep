@@ -1,2 +1,36 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+<div id="map-container">
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+
+    function getLocation(){
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    }
+
+    function successCallback(position) {
+
+        var coordinates = [3,3];
+        //coordinates = [position.coords.latitude,  position.coords.longitude];
+
+        $.ajax({
+            url: '/get_current_zone',
+            type: 'POST',
+            async: true,
+            data: {coordinates: coordinates}
+        }).done(function(resp) {
+            console.log(resp);
+            //console.log("Response received");
+
+            
+            //drawZones(<%= raw @zones.to_json %>);
+        });
+    }
+
+    function errorCallback(){
+        console.log("Error en geolocalización");
+    }
+
+
+</script>
