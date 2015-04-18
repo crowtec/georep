@@ -3,10 +3,10 @@
 </div>
 <div id="score" class="row">
   <div id="zone-name" class="alert text-center alert-default col-md-6 col-sm-6 col-xs-6">
-    Nombre de zona
+    <%= @current_zone[:name]%>
   </div>
   <div id="reputacion" class="alert text-center alert-success col-md-4 col-sm-4 col-xs-4">
-    Reputación
+    <h2><%= @current_zone[:data_info][:data][:value]%></h2>
   </div>
   <button type="button" id="new-valoration" class="btn btn-success glyphicon glyphicon-plus col-md-2" data-toggle="modal" data-target="#myModal"></button>
 

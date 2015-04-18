@@ -5,6 +5,8 @@ class WelcomeController < ApplicationController
   def index
     @zones = get_all_barrios
     @valoraciones = get_all_repvalues
+    @current_zone = get_current_zone
+
   end
 
   def add_repvalue

@@ -33,7 +33,7 @@ function drawParent(zones){
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
         var coordinates = geometry.coordinates[0];
-        //console.log(zones.params.zones[key]);
+        console.log(zones.params.zones[key]);
        // map.data.loadGeoJson(geometry);
 
         var polygonCoords = [];
