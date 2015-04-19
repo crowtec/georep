@@ -130,10 +130,12 @@ function drawZones(zones) {
             console.log(marker.customInfo);
             var modal = $('#valoration-modal');
             $('#valoration-modal-title').html('').append(this.customInfo.texto);
-            var img =   $('<img class="text-center" style="max-width: 200px; margin-left: 20px">');
-            var info = $('<div class="h4">');
+            var img =   $('<img class="text-center" style="max-width: 300px; margin-left: 20px">');
+            var info = $('<div class="h4 text-center">');
             info.append(this.customInfo.etiquetas).append(generateValueTag(this.customInfo.valor));
             img.attr('src', this.customInfo.foto);
+            var div_image = $('<div class="text-center row" >');
+            div_image.append(img);
             $('#valoration-modal-body').html('').append(img).append(info);
             modal.modal('show');
         });
