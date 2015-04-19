@@ -42,10 +42,10 @@ function initialize(b, r) {
     }
 
     function successCallback(position) {
-        console.log("geolocation obtained " + position);
         current_location = new google.maps.LatLng(position.coords.latitude,
             position.coords.longitude);
 
+        console.log("geolocation obtained " + current_location);
         loadMap();
     }
 
