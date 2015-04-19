@@ -7,7 +7,7 @@
         <div id="reputacion" class="alert alert-info col-md-12 col-xs-12">
         </div>
       <div>
-        <button type="button" id="panic-button" style="margin-top: -40px" class="btn btn-lg btn-danger glyphicon glyphicon-earphone pull-left" data-toggle="modal" data-target="#myModal"> </button>
+        <button type="button" id="panic-button" style="margin-top: -40px" class="btn btn-lg btn-danger glyphicon glyphicon-earphone pull-left" data-toggle="modal" data-target="#panic-modal"> </button>
         <button type="button" id="new-valoration" style="margin-top: -40px; margin-left: -15px" class="btn btn-lg btn-success glyphicon glyphicon-plus pull-right" data-toggle="modal" data-target="#myModal"></button>
       </div>
       </div>
@@ -48,7 +48,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Modal -->
+<!-- Valoration Modal -->
 <div class="modal fade" id="valoration-modal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -65,6 +65,30 @@
 
       </div>
 
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="panic-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">×
+        </button>
+        <h4 id="panic-modal-title" class="modal-title" id="myModalLabel">
+            ¿Emergencia?
+
+        </h4>
+      </div>
+      <div id="panic-modal-body" class="modal-body text-center">
+        El número de emergencia es: <h2>112</h2>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="tel:1004">Llamar</a></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
