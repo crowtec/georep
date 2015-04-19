@@ -43,7 +43,7 @@ function initialize(b, r) {
             current_location = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
-            console.log("geolocation: " + current_location );
+            console.log("geolocation: taken" );
             loadMap();
         }, function() {
             handleNoGeolocation();
