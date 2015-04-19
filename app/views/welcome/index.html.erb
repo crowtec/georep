@@ -1,14 +1,15 @@
-<div id="zone-name" class="header text-center">
-  <h2 class=""><%= @current_zone[:name]%></h2>
+<div id="header-div">
+    <div id="zone-name" class="text-center">
+      <h2 class=""><%= @current_zone[:name]%></h2>
+    </div>
+    <div class="col-md-12">
+      <div id="reputacion" class="h3 col-md-12 col-xs-12">
+        <button type="button" id="new-valoration" style="min-height: 100%" class="btn col-md-1 col-xs-2 btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></button>
+      </div>
+
+
+    </div>
 </div>
-<div class="col-md-12">
-  <div id="reputacion" class="h3 col-md-12 col-xs-12 row">
-    <button type="button" id="new-valoration" style="min-height: 100%" class="btn col-md-1 col-xs-1 btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></button>
-  </div>
-
-
-</div>
-
 <div id="map-container">
 </div>
 
