@@ -2,7 +2,8 @@ class WelcomeController < ApplicationController
   include WelcomeHelper
   require 'xmlrpc/client'
 
-  TEST_COORDINATE = [40.453787, -3.678227]
+  #TEST_COORDINATE = [40.453787, -3.678227]
+  TEST_COORDINATE = [40.454419, -3.688247]
   AUTHENTICATION = {
       email: "a@b.c",
       user_code: "a0066bbcbe25d7029a0e6934e1aa",
