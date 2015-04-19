@@ -39,11 +39,13 @@ function initialize(b, r) {
     barrios = b;
     repvalues = r;
     if(navigator.geolocation) {
+        console.log("has geolocation" );
         navigator.geolocation.getCurrentPosition(function(position) {
+
+            console.log("geolocation obtained " + position);
             current_location = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
-            console.log("geolocation: taken" );
             loadMap();
         }, function() {
             handleNoGeolocation();
