@@ -36,7 +36,7 @@ function initialize(b, r) {
     repvalues = r;
     if(navigator.geolocation) {
         console.log("has geolocation" );
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:Infinity, timeout:0, enableHighAccuracy: true });
     } else {
         // Browser doesn't support Geolocation
         handleNoGeolocation();
