@@ -40,18 +40,21 @@ function initialize(b, r) {
     repvalues = r;
     if(navigator.geolocation) {
         console.log("has geolocation" );
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            console.log("geolocation obtained " + position);
-            current_location = new google.maps.LatLng(position.coords.latitude,
-                position.coords.longitude);
-
-            loadMap();
-        }, function() {
-            handleNoGeolocation();
-        });
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
         // Browser doesn't support Geolocation
+        handleNoGeolocation();
+    }
+
+    function successCallback(position) {
+        console.log("geolocation obtained " + position);
+        current_location = new google.maps.LatLng(position.coords.latitude,
+            position.coords.longitude);
+
+        loadMap();
+    }
+
+    function errorCallback(){
         handleNoGeolocation();
     }
 
