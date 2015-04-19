@@ -124,25 +124,27 @@ function drawZones(zones) {
         var marker = new google.maps.Marker({
             position: center,
             map: map,
-            icon: "https://cdn0.iconfinder.com/data/icons/super-mono-basic/blue/exclamation-circle_basic_blue.png"
+            icon: "https://cdn0.iconfinder.com/data/icons/super-mono-basic/blue/exclamation-circle_basic_blue.png",
+            customInfo: JSON.parse(zones.params.zones[key].data_info.data)
 
         });
-        google.maps.event.addListener(lightCircle, 'click', function() {
-            console.log(marker.customInfo);
-            var modal = $('#valoration-modal');
-            $('#valoration-modal-title').html('').append(this.customInfo.texto);
-            var img =   $('<img class="text-center" style="max-width: 300px; margin-left: 20px">');
-            var info = $('<div class="h4 text-center">');
-            info.append(this.customInfo.etiquetas).append(generateValueTag(this.customInfo.valor));
-            img.attr('src', this.customInfo.foto);
-            var div_image = $('<div class="text-center row" >');
-            div_image.append(img);
-            $('#valoration-modal-body').html('').append(img).append(info);
-            modal.modal('show');
-        });
+        google.maps.event.addListener(marker, 'click', clickListener );
+        google.maps.event.addListener(lightCircle, 'click', clickListener );
 
     }
 
+}
+function clickListener() {
+    var modal = $('#valoration-modal');
+    $('#valoration-modal-title').html('').append(this.customInfo.texto);
+    var img =   $('<img class="text-center" style="max-width: 300px; margin-left: 20px">');
+    var info = $('<div class="h4 text-center">');
+    info.append(this.customInfo.etiquetas).append(generateValueTag(this.customInfo.valor));
+    img.attr('src', this.customInfo.foto);
+    var div_image = $('<div class="text-center row" >');
+    div_image.append(img);
+    $('#valoration-modal-body').html('').append(img).append(info);
+    modal.modal('show');
 }
 function generateValueTag(value){
     var span = $('<div class="alert text-center" role="alert"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> ' + value + '</div>');
