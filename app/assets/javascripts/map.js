@@ -41,27 +41,27 @@ function initialize(b, r) {
         handleNoGeolocation();
     }
 
-    function successCallback(position) {
-        current_location = new google.maps.LatLng(position.coords.latitude,
-            position.coords.longitude);
-
-        console.log("geolocation obtained " + current_location);
-        loadMap();
-    }
-
-    function errorCallback(){
-        handleNoGeolocation();
-    }
-
-
-    function handleNoGeolocation(){
-        console.log("no geolocation");
-        current_location = new google.maps.LatLng(40.452666, -3.678407);
-        loadMap();
-    }
-
-
 }
+
+function successCallback(position) {
+    current_location = new google.maps.LatLng(position.coords.latitude,
+        position.coords.longitude);
+
+    console.log("geolocation obtained " + current_location);
+    loadMap();
+}
+
+function errorCallback(){
+    handleNoGeolocation();
+}
+
+
+function handleNoGeolocation(){
+    console.log("no geolocation");
+    current_location = new google.maps.LatLng(40.452666, -3.678407);
+    loadMap();
+}
+
 function drawParent(zones){
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
@@ -74,14 +74,20 @@ function drawParent(zones){
             polygonCoords.push(new google.maps.LatLng(coordinates[i][0], coordinates[i][1]));
         }
         //console.log(polygonCoords);
-        // Construct the polygon.
+        // Construct the polygon
+        var data = zones.params.zones[key].data_info.data.replace(":value=>", '"value":').replace(":count=>", '"count":');
+        data = JSON.parse(data);
+        var color = "#666666";
+        if (data.value){
+            color = generateColor(data.value);
+        }
         var polygon = new google.maps.Polygon({
             paths: polygonCoords,
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
+            strokeColor: color,
+            strokeOpacity: 0.5,
             strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
+            fillColor: color,
+            fillOpacity: 0.15,
             map: map
         });
 
@@ -96,27 +102,32 @@ function drawZones(zones) {
     for (key in zones.params.zones) {
         var geometry = zones.params.zones[key].shape;
         var coordinates = geometry.coordinates;
-        //console.log(geometry);
-        //console.log(coordinates);
 
-        var color = '#' + (function co(lor) {
-                return (lor +=
-                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'][Math.floor(Math.random() * 16)])
-                && (lor.length == 6) ? lor : co(lor);
-            })('');
+        //var color = '#' + (function co(lor) {
+        //        return (lor +=
+        //            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'][Math.floor(Math.random() * 16)])
+        //        && (lor.length == 6) ? lor : co(lor);
+        //    })('');
+        var data = zones.params.zones[key].data_info.data.replace(":valor=>", '"valor":').replace(":count=>", '"count":');
+        data = JSON.parse(data);
+        var color = "#666666";
+        if (data.valor){
+            color = generateColor(data.valor);
+        }
 
         var center = new google.maps.LatLng(coordinates[0], coordinates[1]);
 
         var circleOptions = {
-            strokeColor: color,
+            strokeColor: "#000000",
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: color,
-            fillOpacity: 0.35,
+            fillOpacity: 0.5,
             map: map,
             center: center,
-            radius: 30
+            radius: 10
         };
+
         // Add the circle for this city to the map.
         lightCircle = new google.maps.Circle(circleOptions);
 
@@ -143,8 +154,16 @@ function drawZones(zones) {
     }
 
 }
+
+function generateColor(value){
+    var r = (255 * value) / 100;
+    var g = (255 * (100 - value)) / 100;
+    var b = 0;
+    return "rgb(" + parseInt(r) + ", " + parseInt(g) + ", " + parseInt(b) + ")";
+}
+
 function generateValueTag(value){
-    var span = $('<div class="alert text-center" role="alert"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> ' + value + '</div>');
+    var span = $('<div class="text-center" role="alert"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> ' + value + '</div>');
     if(value > 4){
         span.addClass('alert-success');
     }else{
@@ -153,3 +172,4 @@ function generateValueTag(value){
     return span;
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
+function d2h(d) { return (+d).toString(16).toUpperCase(); }
