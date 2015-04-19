@@ -157,8 +157,8 @@ function drawZones(zones) {
 }
 
 function generateColor(value){
-    var r = (255 * value) / 100;
-    var g = (255 * (100 - value)) / 100;
+    var r = (255 * (10 - value)) / 10;
+    var g = (255 * value) / 10;
     var b = 0;
     return "rgb(" + parseInt(r) + ", " + parseInt(g) + ", " + parseInt(b) + ")";
 }
