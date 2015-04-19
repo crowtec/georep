@@ -92,9 +92,7 @@
     function errorCallback(){
         console.log("Error en geolocalización");
     }
-        initialize();
-        drawParent(<%= raw @zones.to_json %>);
-        drawZones(<%= raw @valoraciones.to_json %>);
+        initialize(<%= raw @zones.to_json %>, <%= raw @valoraciones.to_json %>);
 
 </script>
 
