@@ -16,14 +16,43 @@ var rendererOptions = {
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
+var current_location;
+var barrios;
+var repvalues;
 
-function initialize() {
-
+function loadMap(){
     var mapOptions = {
-        center: new google.maps.LatLng(40.452666, -3.678407),
+        center: current_location,
         zoom:17
     };
     map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
+    drawParent(barrios);
+    drawZones(repvalues);
+}
+
+function handleNoGeolocation(){
+    console.log("no geolocation");
+    current_location = new google.maps.LatLng(40.452666, -3.678407);
+    loadMap();
+}
+function initialize(b, r) {
+    barrios = b;
+    repvalues = r;
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            current_location = new google.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            console.log("geolocation: " + current_location );
+            loadMap();
+        }, function() {
+            handleNoGeolocation();
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleNoGeolocation();
+    }
+
 
 
 
