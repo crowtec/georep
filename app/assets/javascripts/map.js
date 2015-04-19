@@ -19,6 +19,7 @@ var map;
 var current_location;
 var barrios;
 var repvalues;
+var geocoder;
 
 function loadMap(){
     var mapOptions = {
@@ -31,6 +32,8 @@ function loadMap(){
 }
 
 function initialize(b, r) {
+    geocoder = new google.maps.Geocoder();
+
     barrios = b;
     repvalues = r;
     if(navigator.geolocation) {
@@ -46,6 +49,13 @@ function initialize(b, r) {
 function successCallback(position) {
     current_location = new google.maps.LatLng(position.coords.latitude,
         position.coords.longitude);
+
+    geocoder.geocode({
+        'latLng': current_location
+    }, function(results, status) {
+        console.log(results);
+        $("#panic-modal-location").html(results[0].formatted_address);
+    });
 
     console.log("geolocation obtained " + current_location);
     loadMap();
