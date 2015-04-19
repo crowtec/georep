@@ -43,12 +43,14 @@ function initialize(b, r) {
     }
 
     function successCallback(position) {
-        p = position;
-        console.log("geolocation obtained " + position);
-        current_location = new google.maps.LatLng(position.coords.latitude,
-            position.coords.longitude);
+        //p = position;
+        //console.log("geolocation obtained " + position);
+        //current_location = new google.maps.LatLng(position.coords.latitude,
+        //    position.coords.longitude);
+        //
+        //loadMap();
 
-        loadMap();
+        handleNoGeolocation();
     }
 
     function errorCallback(){
