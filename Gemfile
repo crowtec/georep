@@ -40,3 +40,7 @@ gem 'mongoid'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 
+group :production, :staging do
+  gem 'pg'
+  gem 'rails_12factor'
+end
