@@ -30,7 +30,6 @@ function loadMap(){
     drawZones(repvalues);
 }
 
-var p;
 function initialize(b, r) {
     barrios = b;
     repvalues = r;
@@ -43,14 +42,11 @@ function initialize(b, r) {
     }
 
     function successCallback(position) {
-        //p = position;
-        //console.log("geolocation obtained " + position);
-        //current_location = new google.maps.LatLng(position.coords.latitude,
-        //    position.coords.longitude);
-        //
-        //loadMap();
+        console.log("geolocation obtained " + position);
+        current_location = new google.maps.LatLng(position.coords.latitude,
+            position.coords.longitude);
 
-        handleNoGeolocation();
+        loadMap();
     }
 
     function errorCallback(){
