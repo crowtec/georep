@@ -95,6 +95,11 @@ function drawZones(zones) {
         });
         google.maps.event.addListener(marker, 'click', function() {
             console.log(marker.customInfo);
+            var modal = $('#valoration-modal');
+            var img =   $('<img class="text-center">');
+            img.attr('src', this.customInfo.foto);
+            $('#valoration-modal-body').html('').append(img).append(this.customInfo.texto);
+            modal.modal('show');
         });
 
     }

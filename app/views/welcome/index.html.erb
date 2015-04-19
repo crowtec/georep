@@ -1,13 +1,14 @@
-
-<div id="map-container" style="max-height: 90%">
+<div id="zone-name" class="text-center alert-default">
+  <h2><%= @current_zone[:name]%></h2>
 </div>
-<div id="score" class="row">
-  <div id="zone-name" class="alert text-center alert-default col-md-6 col-sm-6 col-xs-6">
-    <%= @current_zone[:name]%>
-  </div>
-  <div id="reputacion" class="alert text-center alert-success col-md-4 col-sm-4 col-xs-4">
-    <h2><%= @current_zone[:data_info][:data][:value]%></h2>
-  </div>
+<div id="reputacion" class="alert text-center alert-success">
+  Reputacion:
+
+</div>
+<div id="map-container">
+</div>
+
+<div>
   <button type="button" id="new-valoration" class="btn btn-success glyphicon glyphicon-plus col-md-2" data-toggle="modal" data-target="#myModal"></button>
 
 
@@ -32,6 +33,34 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <%= f.submit "Valorar", class: 'btn btn-success' %>
         <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">×
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          This Modal title
+        </h4>
+      </div>
+      <div class="modal-body">
+        Press ESC button to exit.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"
+                data-dismiss="modal">Close
+        </button>
+        <button type="button" class="btn btn-primary">
+          Submit changes
+        </button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
