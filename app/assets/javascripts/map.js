@@ -96,14 +96,25 @@ function drawZones(zones) {
         google.maps.event.addListener(marker, 'click', function() {
             console.log(marker.customInfo);
             var modal = $('#valoration-modal');
-            var img =   $('<img class="text-center">');
+            $('#valoration-modal-title').html('').append(this.customInfo.texto);
+            var img =   $('<img class="text-center" style="max-width: 200px; margin-left: 20px">');
+            var info = $('<div class="h4">');
+            info.append(this.customInfo.etiquetas).append(generateValueTag(this.customInfo.valor));
             img.attr('src', this.customInfo.foto);
-            $('#valoration-modal-body').html('').append(img).append(this.customInfo.texto);
+            $('#valoration-modal-body').html('').append(img).append(info);
             modal.modal('show');
         });
 
     }
 
 }
-
+function generateValueTag(value){
+    var span = $('<div class="alert text-center" role="alert"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> ' + value + '</div>');
+    if(value > 4){
+        span.addClass('alert-success');
+    }else{
+        span.addClass('alert-danger');
+    }
+    return span;
+}
 //google.maps.event.addDomListener(window, 'load', initialize);

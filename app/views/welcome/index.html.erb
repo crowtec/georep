@@ -1,15 +1,19 @@
-<div id="zone-name" class="text-center alert-default">
-  <h2><%= @current_zone[:name]%></h2>
+<div id="zone-name" class="header text-center">
+  <h2 class=""><%= @current_zone[:name]%></h2>
 </div>
-<div id="reputacion" class="alert text-center alert-success">
-  Reputacion:
+<div class="col-md-12">
+  <div id="reputacion" class="h3 col-md-12 col-xs-12 row">
+    <button type="button" id="new-valoration" style="min-height: 100%" class="btn col-md-1 col-xs-1 btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></button>
+  </div>
+
 
 </div>
+
 <div id="map-container">
 </div>
 
 <div>
-  <button type="button" id="new-valoration" class="btn btn-success glyphicon glyphicon-plus col-md-2" data-toggle="modal" data-target="#myModal"></button>
+
 
 
 </div>
@@ -47,21 +51,14 @@
         <button type="button" class="close" data-dismiss="modal"
                 aria-hidden="true">×
         </button>
-        <h4 class="modal-title" id="myModalLabel">
-          This Modal title
+        <h4 id="valoration-modal-title" class="modal-title" id="myModalLabel">
+
         </h4>
       </div>
       <div id="valoration-modal-body" class="modal-body">
-        Press ESC button to exit.
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default"
-                data-dismiss="modal">Close
-        </button>
-        <button type="button" class="btn btn-primary">
-          Submit changes
-        </button>
-      </div>
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -99,4 +96,9 @@
         drawParent(<%= raw @zones.to_json %>);
         drawZones(<%= raw @valoraciones.to_json %>);
 
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    var span = generateValueTag(JSON.parse(<%= eval(@current_zone[:data_info][:data])[:value]%>));
+    $('#reputacion').append(span);
 </script>
