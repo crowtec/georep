@@ -85,8 +85,10 @@ class WelcomeController < ApplicationController
   def get_current_zone
     p = {
         authentication: AUTHENTICATION,
-        zone_class: "barrio",
-        name: "Barrio Hispanoamerica"
+        parameters:{
+          zone_class: "barrio",
+          name: "Barrio Hispanoamerica"
+        }
     }
     queryCtOS("ctos.getZones", p)
   end
