@@ -125,7 +125,8 @@ function drawZones(zones) {
             fillOpacity: 0.5,
             map: map,
             center: center,
-            radius: 10
+            radius: 10,
+            customInfo: JSON.parse(zones.params.zones[key].data_info.data)
         };
 
         // Add the circle for this city to the map.
@@ -134,10 +135,10 @@ function drawZones(zones) {
         var marker = new google.maps.Marker({
             position: center,
             map: map,
-            icon: "http://www.basicgo.com/bundles/basicgo/frontend/imagenes/exclamacionAviso.png",
-            customInfo: JSON.parse(zones.params.zones[key].data_info.data)
+            icon: "https://cdn0.iconfinder.com/data/icons/super-mono-basic/blue/exclamation-circle_basic_blue.png"
+
         });
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(lightCircle, 'click', function() {
             console.log(marker.customInfo);
             var modal = $('#valoration-modal');
             $('#valoration-modal-title').html('').append(this.customInfo.texto);
