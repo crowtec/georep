@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   include WelcomeHelper
   require 'xmlrpc/client'
 
-  COORDINATE = [40.453787, -3.678227]
+  TEST_COORDINATE = [40.453787, -3.678227]
   AUTHENTICATION = {
       email: "a@b.c",
       user_code: "a0066bbcbe25d7029a0e6934e1aa",
@@ -32,7 +32,7 @@ class WelcomeController < ApplicationController
         zone_class: "repvalue",
         shape:{
             shape_class: "circular",
-            coordinate: COORDINATE,
+            coordinate: TEST_COORDINATE,
             radius: 1
         },
         data_info:{
@@ -98,7 +98,7 @@ class WelcomeController < ApplicationController
         authentication:AUTHENTICATION,
         zone_class: "repvalue",
         coordinates:
-            [COORDINATE]
+            [TEST_COORDINATE]
     }
     queryCtOS("ctos.coordinatesContainerZones", p)
   end

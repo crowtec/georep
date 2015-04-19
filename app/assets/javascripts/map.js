@@ -174,5 +174,11 @@ function generateValueTag(value){
     }
     return span;
 }
+
+function generateValueTitle(value){
+    var span = $('<div class="text-center" role="alert"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> ' + value + '</div>');
+
+    return span;
+}
 //google.maps.event.addDomListener(window, 'load', initialize);
 function d2h(d) { return (+d).toString(16).toUpperCase(); }

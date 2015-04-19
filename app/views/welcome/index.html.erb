@@ -2,8 +2,9 @@
     <div id="zone-name" class="text-center">
       <h2 class=""><%= @current_zone[:name]%></h2>
     </div>
-    <div class="col-md-12"><div class="h3 col-md-12 col-xs-12 text-center">
-        <div id="reputacion" class="alert alert-success col-md-12 col-xs-12">
+    <div class="col-md-12">
+      <div class="h3 col-md-12 col-xs-12 text-center ">
+        <div id="reputacion" class="alert alert-info col-md-12 col-xs-12">
         </div>
       <div>
         <button type="button" id="panic-button" style="margin-top: -40px" class="btn btn-lg btn-danger glyphicon glyphicon-earphone pull-left" data-toggle="modal" data-target="#myModal"> </button>
@@ -76,6 +77,6 @@
 </script>
 
 <script type="text/javascript" charset="utf-8">
-    var span = generateValueTag(JSON.parse(<%= eval(@current_zone[:data_info][:data])[:value]%>));
+    var span = generateValueTitle(JSON.parse(<%= eval(@current_zone[:data_info][:data])[:value]%>));
     $('#reputacion').append(span);
 </script>
