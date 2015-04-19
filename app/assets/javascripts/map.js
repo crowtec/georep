@@ -166,7 +166,7 @@ function generateColor(value){
 function clickListener() {
     var modal = $('#valoration-modal');
     $('#valoration-modal-title').html('').append(this.customInfo.texto);
-    var img =   $('<img class="text-center" style="max-width: 300px; margin-left: 20px">');
+    var img =   $('<img class="text-center" style="max-width: 300px;">');
     var info = $('<div class="h4 text-center">');
     info.append(this.customInfo.etiquetas).append(generateValueTag(this.customInfo.valor));
     img.attr('src', this.customInfo.foto);
